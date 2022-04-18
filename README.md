@@ -3,31 +3,45 @@
 
 
 
-для сборки 
+### Сборка
 
-https://github.com/jtv/libpqxx/blob/master/BUILDING-cmake.md
-
-
-
-установите обязательно пакет
+1. установите обязательно пакет postgresql-server-dev-12
 
 https://www.postgresql.org/download/linux/debian/
 
-postgresql-server-dev-12
+2. скачать git clone https://github.com/jtv/libpqxx.git
+
+3. инструкция по сборке https://github.com/jtv/libpqxx/blob/master/BUILDING-cmake.md
 
 
 
-скачать
+4. зайти в папку
 
-git clone https://github.com/jtv/libpqxx.git
+`cmake .`
+
+`sudo cmake --build .`
+
+`sudo cmake --install .`
 
 
 
-зайти в папку
+### Запуск базы
 
-cmake .
+By default, the postgres user has no password and can hence only connect if ran by the postgres system user. The following command will assign it:
 
-sudo cmake --build .
+```
+sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
+sudo -u postgres psql -c "CREATE DATABASE testdb;"
+```
 
-sudo cmake --install .
+- Start the PostgreSQL server
 
+```
+sudo service postgresql start
+```
+
+- Stop the PostgreSQL server:
+
+```
+sudo service postgresql stop
+```

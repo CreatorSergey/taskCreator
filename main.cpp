@@ -6,8 +6,8 @@
         try
         {
             // Connect to the database.
-            pqxx::connection C("dbname = postgres user = postgres password = mysecretpassword \
-      hostaddr = 127.0.0.1 port = 5433");
+            pqxx::connection C("dbname = postgres user = postgres password = postgres \
+      hostaddr = 127.0.0.1 port = 5432");
             std::cout << "Connected to " << C.dbname() << '\n';
 
             // Start a transaction.
